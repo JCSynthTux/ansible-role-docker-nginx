@@ -1,29 +1,29 @@
-- name: Creating nginx_cert volume
+- name: Ensure nginx_cert volume exists
   docker_volume:
     name: nginx_cert
     state: present
 
-- name: Creating nginx_conf.d volume
+- name: Ensure nginx_conf.d volume exists
   docker_volume:
     name: nginx_conf.d
     state: present
 
-- name: Creating nginx_cert volume
+- name: Ensure nginx_cert volume exists
   docker_volume:
     name: nginx_cert
     state: present
 
-- name: Creating nginx_vhost.d volume
+- name: Ensure nginx_vhost.d volume exists
   docker_volume:
     name: nginx_vhost.d
     state: present
 
-- name: Creating nginx_htpasswd volume
+- name: Ensure nginx_htpasswd volume exists
   docker_volume:
     name: nginx_htpasswd
     state: present
 
-- name: Creating nginx_html volume
+- name: Ensure nginx_html volume exists
   docker_volume:
     name: nginx_html
     state: present

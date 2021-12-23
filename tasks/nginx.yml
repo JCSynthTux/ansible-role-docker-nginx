@@ -1,4 +1,4 @@
-- name: Creating nginx container
+- name: Start nginx container
   docker_container:
     name: nginx
     image: nginxproxy/nginx-proxy
