@@ -2,7 +2,7 @@
   docker_container:
     name: nginx
     image: nginxproxy/nginx-proxy
-    network_mode: nginx_network
+    network_mode: "{{ nginx_network }}"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
