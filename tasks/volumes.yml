@@ -8,11 +8,6 @@
     name: nginx_conf.d
     state: present
 
-- name: Ensure nginx_cert volume exists
-  docker_volume:
-    name: nginx_cert
-    state: present
-
 - name: Ensure nginx_vhost.d volume exists
   docker_volume:
     name: nginx_vhost.d
