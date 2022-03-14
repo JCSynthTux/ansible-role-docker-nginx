@@ -3,9 +3,9 @@ This role deploys a NGINX reverse proxy and optional letsencrypt in a Docker con
 
 ## Variables
 
-There are a few variables to set:
+There are a few variables available:
 
-```nginx_network: "nginx_network"``` required - name of the nginx network
+```nginx_network: "nginx_network"``` optional - name of the nginx network - defaults to nginx_network
 
 ```letsencrypt_install: true``` optional - true to install letsencrypt - false to uninstall or not setup
 
