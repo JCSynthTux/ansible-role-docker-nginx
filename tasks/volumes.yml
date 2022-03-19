@@ -1,6 +1,6 @@
-- name: Ensure nginx_cert volume exists
+- name: Ensure nginx_certs volume exists
   docker_volume:
-    name: nginx_cert
+    name: nginx_certs
     state: present
 
 - name: Ensure nginx_conf.d volume exists
