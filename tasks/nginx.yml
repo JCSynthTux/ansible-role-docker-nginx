@@ -18,4 +18,4 @@
       "DHPARAM_BITS": "4096"
       "DHPARAM_GENERATION": "false"
     restart_policy: always
-    state: "{{ 'started' when nginx_install is true else 'absent' | default('absent') }}"
+    state: "{{ 'started' if nginx_install is true else 'absent' | default('absent') }}"
