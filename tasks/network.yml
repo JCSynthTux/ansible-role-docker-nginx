@@ -1,4 +1,4 @@
 - name: Ensure nginx network exists
   docker_network:
     name: "{{ nginx_network | default('nginx_network') }}"
-    state: "{{ 'started' when nginx_install is true else 'absent' | default('absent') }}"
+    state: "{{ 'started' if nginx_install is true else 'absent' | default('absent') }}"
