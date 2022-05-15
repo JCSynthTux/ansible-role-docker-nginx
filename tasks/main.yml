@@ -1,11 +1,7 @@
 - import_tasks: "{{ role_path }}/tasks/network.yml"
-  tags:
-    - nginx
 
 - import_tasks: "{{ role_path }}/tasks/volumes.yml"
-  tags:
-    - nginx
 
 - import_tasks: "{{ role_path }}/tasks/nginx.yml"
-  tags:
-    - nginx
+
+- import_tasks: "{{ role_path }}/tasks/letsencrypt.yml"
