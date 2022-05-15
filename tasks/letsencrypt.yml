@@ -10,4 +10,4 @@
     volumes_from:
       - nginx
     restart_policy: always
-    state: "{{ 'started' if letsencrypt_install is true else 'absent' }}"
+    state: "{{ 'started' when nginx_install is true and nginx_letsencrypt is true else 'absent' | default('absent') }}"
