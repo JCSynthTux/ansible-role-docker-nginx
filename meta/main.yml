@@ -2,7 +2,7 @@
 dependencies: []
 
 galaxy_info:
-  role_name: nginx
+  role_name: jchroback.nginx
   author: jchroback
   description: NGINX deployment in Docker
   company: ""
