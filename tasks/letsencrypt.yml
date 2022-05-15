@@ -5,9 +5,10 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     env:
-      "DEFAULT_EMAIL": "{{ letsencrypt_mail | default(omit) }}"
+      "DEFAULT_EMAIL": "{{ letsencrypt_mail }}"
       "NGINX_PROXY_CONTAINER": "nginx"
     volumes_from:
       - nginx
     restart_policy: always
     state: "{{ 'started' if nginx_install is true and nginx_letsencrypt is true else 'absent' | default('absent') }}"
+  when: letsencrypt_mail is defined
