@@ -1,0 +1,32 @@
+---
+nginx: "false"
+nginx_container_name: "nginx"
+nginx_image_tag: "latest"
+nginx_default_network: "{{ nginx_container_name }}_network"
+nginx_default_network_ls: 
+  - "{{ nginx_default_network }}" 
+nginx_remote_env_path: "/opt/{{ nginx_container_name }}.env"
+nginx_extra_networks: []
+nginx_networks: "{{ nginx_default_network_ls + nginx_extra_networks }}"
+nginx_restart_policy: "always"
+nginx_container_state: "started"
+nginx_dhparam_bits: "4096"
+nginx_dhparam_skip: "false"
+nginx_enable_ipv6: "false"
+nginx_http_port: "80"
+nginx_https_port: "443"
+nginx_https_method: "redirect"
+nginx_default_host: ""
+nginx_env_extra: {}
+nginx_interface_port: 
+  - 80:80
+  - 443:443
+
+letsencrypt: "false"
+letsencrypt_container_name: "letsencrypt"
+letsencrypt_image_tag: "latest"
+letsencrypt_remote_env_path: "/opt/{{ letsencrypt_container_name }}.env"
+letsencrypt_restart_policy: "always"
+letsencrypt_container_state: "started"
+letsencrypt_default_email: ""
+letsencrypt_env_extra: {}
