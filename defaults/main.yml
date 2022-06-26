@@ -2,11 +2,11 @@
 nginx: "false"
 nginx_container_name: "nginx"
 nginx_image_tag: "latest"
-nginx_default_networks: 
-  - "{{ nginx_container_name }}_network"
+nginx_default_network: 
+  - name: "{{ nginx_container_name }}_network"
 nginx_remote_env_path: "/opt/{{ nginx_container_name }}.env"
 nginx_extra_networks: []
-nginx_networks: "{{ nginx_default_networks + nginx_extra_networks }}"
+nginx_networks: "{{ nginx_default_network + nginx_extra_networks }}"
 nginx_restart_policy: "always"
 nginx_container_state: "started"
 nginx_dhparam_bits: "4096"

@@ -1,5 +1,4 @@
-- name: Create nginx default networks
+- name: "Create default network {{ nginx_default_network }}"
   docker_network:
-    name: "{{ item }}"
+    name: "{{ nginx_default_network.name }}"
     state: present
-  with_items: "{{ nginx_default_networks }}"
