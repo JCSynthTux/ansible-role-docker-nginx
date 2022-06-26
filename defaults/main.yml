@@ -18,7 +18,7 @@ nginx_https_port: "443"
 nginx_https_method: "redirect"
 nginx_default_host: ""
 nginx_env_extra: {}
-nginx_interface_port: 
+nginx_published_ports: 
   - 80:80
   - 443:443
 
