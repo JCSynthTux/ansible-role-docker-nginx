@@ -2,4 +2,4 @@
   docker_network:
     name: "{{ item.name }}"
     state: present
-    with_items: "{{ nginx_networks }}"
+  with_items: "{{ nginx_networks }}"
