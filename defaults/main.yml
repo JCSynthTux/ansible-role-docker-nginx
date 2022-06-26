@@ -18,8 +18,8 @@ nginx_https_method: "redirect"
 nginx_default_host: ""
 nginx_env_extra: {}
 nginx_published_ports: 
-  - 80:80
-  - 443:443
+  - "80:80"
+  - "443:443"
 
 letsencrypt: "false"
 letsencrypt_container_name: "letsencrypt"
