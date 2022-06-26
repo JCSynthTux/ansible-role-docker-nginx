@@ -1,21 +1,25 @@
-- name: Start nginx container
+---
+- name: Push env file
+  template:
+    src: "{{ role_path }}/templates/nginx.env.j2"
+    dest: "{{ nginx_remote_env_path }}"
+  register: nginx_envpush
+
+- name: Spawn nginx container
   docker_container:
-    name: nginx
-    image: nginxproxy/nginx-proxy
-    network_mode: "{{ nginx_network | default('nginx_network') }}"
+    name: "{{ nginx_container_name }}"
+    image: "nginxproxy/nginx-proxy:{{ nginx_image_tag }}"
+    networks: "{{ nginx_networks }}"
+    published_ports: "{{ nginx_published_ports }}"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
-      - nginx_certs:/etc/nginx/certs:ro
-      - nginx_conf.d:/etc/nginx/conf.d/
-      - nginx_vhost.d:/etc/nginx/vhost.d
-      - nginx_htpasswd:/etc/nginx/htpasswd
-      - nginx_html:/usr/share/nginx/html
-    ports:
-      - "80:80"
-      - "443:443"
-    env:
-      "DHPARAM_BITS": "4096"
-      "DHPARAM_GENERATION": "false"
-    restart_policy: always
-    state: "{{ 'started' if nginx_install is true else 'absent' | default('absent') }}"
+      - "{{ nginx_container_name }}_certs:/etc/nginx/certs:ro"
+      - "{{ nginx_container_name }}_conf.d:/etc/nginx/conf.d"
+      - "{{ nginx_container_name }}_vhost.d:/etc/nginx/vhost.d"
+      - "{{ nginx_container_name }}_htpasswd:/etc/nginx/htpasswd"
+      - "{{ nginx_container_name }}_html:/usr/share/nginx/html"
+    env_file: "{{ nginx_remote_env_path }}"
+    restart_policy: "{{ nginx_restart_policy }}"
+    recreate: "{{ 'yes' if nginx_envpush.changed else 'no' }}"
+    state: "{{ nginx_container_state }}"

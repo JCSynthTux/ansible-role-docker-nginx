@@ -1,14 +1,24 @@
-- name: Start letsencrypt container
+---
+- name: "Create {{ letsencrypt_container_name }}_acme volume"
+  docker_volume:
+    name: "{{ letsencrypt_container_name }}_acme"
+    state: present
+
+- name: Push env file
+  template:
+    src: "{{ role_path }}/templates/letsencrypt.env.j2"
+    dest: "{{ letsencrypt_remote_env_path }}"
+  register: le_envpush
+
+- name: Spawn letsencrypt container
   docker_container:
-    name: letsencrypt
-    image: jrcs/letsencrypt-nginx-proxy-companion
+    name: "{{ letsencrypt_container_name }}"
+    image: "ghcr.io/nginx-proxy/acme-companion:{{ letsencrypt_image_tag|string }}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    env:
-      "DEFAULT_EMAIL": "{{ letsencrypt_mail }}"
-      "NGINX_PROXY_CONTAINER": "nginx"
-    volumes_from:
-      - nginx
-    restart_policy: always
-    state: "{{ 'started' if nginx_install is true and nginx_letsencrypt is true else 'absent' | default('absent') }}"
-  when: letsencrypt_mail is defined
+      - "{{ letsencrypt_container_name }}_acme:/etc/acme.sh"
+    volumes_from: "{{ nginx_container_name }}"
+    env_file: "{{ letsencrypt_remote_env_path }}"
+    restart_policy: "{{ letsencrypt_restart_policy }}"
+    recreate: "{{ 'yes' if le_envpush.changed else 'no' }}"
+    state: "{{ letsencrypt_container_state }}"

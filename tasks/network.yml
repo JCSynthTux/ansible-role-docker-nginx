@@ -1,4 +1,5 @@
-- name: Ensure nginx network exists
+- name: Create nginx default networks
   docker_network:
-    name: "{{ nginx_network | default('nginx_network') }}"
-    state: "{{ 'present' if nginx_install is true else 'absent' | default('absent') }}"
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ nginx_default_networks }}"

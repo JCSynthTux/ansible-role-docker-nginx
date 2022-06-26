@@ -1,30 +1,25 @@
-- name: Ensure nginx_certs volume exists
+- name: "Ensure {{ nginx_container_name }}_certs volume exists"
   docker_volume:
-    name: nginx_certs
+    name: "{{ nginx_container_name }}_certs"
     state: present
-  when: nginx_install is defined and nginx_install is true
 
-- name: Ensure nginx_conf.d volume exists
+- name: "Ensure {{ nginx_container_name }}_conf.d volume exists"
   docker_volume:
-    name: nginx_conf.d
+    name: "{{ nginx_container_name }}_conf.d"
     state: present
-  when: nginx_install is defined and nginx_install is true
 
-- name: Ensure nginx_vhost.d volume exists
+- name: "Ensure {{ nginx_container_name }}_vhost.d volume exists"
   docker_volume:
-    name: nginx_vhost.d
+    name: "{{ nginx_container_name }}_vhost.d"
     state: present
-  when: nginx_install is defined and nginx_install is true
 
-- name: Ensure nginx_htpasswd volume exists
+- name: "Ensure {{ nginx_container_name }}_htpasswd volume exists"
   docker_volume:
-    name: nginx_htpasswd
+    name: "{{ nginx_container_name }}_htpasswd"
     state: present
-  when: nginx_install is defined and nginx_install is true
 
-- name: Ensure nginx_html volume exists
+- name: "Ensure {{ nginx_container_name }}_html volume exists"
   docker_volume:
-    name: nginx_html
+    name: "{{ nginx_container_name }}_html"
     state: present
-  when: nginx_install is defined and nginx_install is true
 
