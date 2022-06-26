@@ -10,7 +10,7 @@
     name: "{{ nginx_container_name }}"
     image: "nginxproxy/nginx-proxy:{{ nginx_image_tag }}"
     networks: "{{ nginx_networks }}"
-    published_ports: "{{ nginx_published_ports }}"
+    ports: "{{ nginx_published_ports }}"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
