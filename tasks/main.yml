@@ -1,17 +1,17 @@
 ---
-- import_tasks: "{{ role_path }}/tasks/network.yml"
+- include_tasks: "{{ role_path }}/tasks/network.yml"
   when: nginx|bool
   tags: install-nginx
 
-- import_tasks: "{{ role_path }}/tasks/volumes.yml"
+- include_tasks: "{{ role_path }}/tasks/volumes.yml"
   when: nginx|bool
   tags: install-nginx
 
-- import_tasks: "{{ role_path }}/tasks/nginx.yml"
+- include_tasks: "{{ role_path }}/tasks/nginx.yml"
   when: nginx|bool
   tags: install-nginx
 
-- import_tasks: "{{ role_path }}/tasks/letsencrypt.yml"
+- include_tasks: "{{ role_path }}/tasks/letsencrypt.yml"
   when: nginx|bool and letsencrypt|bool
   tags: install-nginx, install-letsencrypt
 
