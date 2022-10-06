@@ -7,7 +7,6 @@ Defaults for variables are listed in ```defaults/main.yml```.
 
 ### Example setups
 ```
-nginx: "true"
 nginx_https_method: "nohttp"
 nginx_published_ports:
   - "443:443"
@@ -16,7 +15,6 @@ This setup will only spawn an NGINX and only expose port 443. http traffic wont 
 Letsencrypt is disabled, so you would have to provide certificates in a different way.
 
 ```
-nginx: "true"
 nginx_https_method: "nohttp"
 nginx_published_ports:
   - "443:443"
@@ -26,7 +24,6 @@ letsencrypt_default_email: "user@mail.tld"
 Same setup as above but with Letsencrypt enabled. 
 
 ```
-nginx: "true"
 nginx_published_ports:
   - "127.0.0.1:80:80"
 ```

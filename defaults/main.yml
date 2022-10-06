@@ -1,5 +1,4 @@
 ---
-nginx: "false"
 nginx_container_name: "nginx"
 nginx_image_tag: "latest"
 nginx_networks: 
