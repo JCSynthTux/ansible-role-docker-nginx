@@ -14,6 +14,7 @@ nginx_https_port: "443"
 nginx_https_method: "redirect"
 nginx_default_host: ""
 nginx_env_extra: {}
+nginx_labels: {}
 nginx_published_ports: 
   - "80:80"
   - "443:443"
@@ -25,4 +26,5 @@ letsencrypt_remote_env_path: "/opt/{{ letsencrypt_container_name }}.env"
 letsencrypt_restart_policy: "always"
 letsencrypt_container_state: "started"
 letsencrypt_default_email: ""
+letsencrypt_labels: {}
 letsencrypt_env_extra: {}

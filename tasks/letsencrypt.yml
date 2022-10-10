@@ -19,6 +19,7 @@
       - "{{ letsencrypt_container_name }}_acme:/etc/acme.sh"
     volumes_from: "{{ nginx_container_name }}"
     env_file: "{{ letsencrypt_remote_env_path }}"
+    labels: "{{letsencrypt_labels}}"
     restart_policy: "{{ letsencrypt_restart_policy }}"
     recreate: "{{ 'yes' if le_envpush.changed else 'no' }}"
     state: "{{ letsencrypt_container_state }}"

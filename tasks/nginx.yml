@@ -20,6 +20,7 @@
       - "{{ nginx_container_name }}_htpasswd:/etc/nginx/htpasswd"
       - "{{ nginx_container_name }}_html:/usr/share/nginx/html"
     env_file: "{{ nginx_remote_env_path }}"
+    labels: "{{ nginx_labels }}"
     restart_policy: "{{ nginx_restart_policy }}"
     recreate: "{{ 'yes' if nginx_envpush.changed else 'no' }}"
     state: "{{ nginx_container_state }}"
